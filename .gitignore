@@ -1,0 +1,5 @@
+.vscode
+.idea
+config
+node_modules
+dist

@@ -2,10 +2,13 @@ FROM node:18-alpine3.15 AS base
 
 COPY package*.json ./
 COPY yarn.lock ./
+COPY tsconfig.json ./
+
+COPY . .
 
 RUN yarn
 
-COPY . .
+RUN yarn build
 
 EXPOSE 8018
 

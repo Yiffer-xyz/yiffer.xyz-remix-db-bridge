@@ -32,6 +32,8 @@ export interface AppConfig {
   storage: {
     bucketName: string;
     comicsBucketFolder: string;
+    unapprovedComicsBucketFolder: string;
     staticStorageUrl: string;
   };
+  tempUploadsFolder: string;
 }

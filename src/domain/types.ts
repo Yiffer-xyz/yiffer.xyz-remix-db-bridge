@@ -12,3 +12,11 @@ export interface Comic {
   created: string;
   updated: string;
 }
+
+export interface Artist {
+  id: number;
+  name: string;
+  patreonName?: string;
+  e621Name?: string;
+  isPending: boolean;
+}

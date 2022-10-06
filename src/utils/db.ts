@@ -4,11 +4,18 @@ import { ApiError, makeApiError } from './error-handling';
 
 let mysqlPool = mysql.createPool(config.db);
 
-export async function queryDb(query: string, queryParams: any[] = [], errorMessage: string = ''): Promise<any> {
+export async function queryDb(
+  query: string,
+  queryParams: any[] = [],
+  errorMessage: string = ''
+): Promise<any> {
   return new Promise((resolve, reject) => {
     mysqlPool.getConnection((err, connection) => {
       if (err) {
         reject(err);
+      }
+      if (!connection) {
+        reject('Could not establish database connection');
       }
 
       connection.query(query, queryParams, (err, results) => {

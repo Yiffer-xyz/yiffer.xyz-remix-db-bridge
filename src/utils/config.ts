@@ -1,7 +1,7 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
 
-let fileContents = fs.readFileSync('config/cfg.yml', 'utf8');
+let fileContents = fs.readFileSync('config/cfg-new.yml', 'utf8');
 const config = yaml.load(fileContents) as AppConfig;
 
 // TODO: validate config fields, fail on startup
@@ -9,6 +9,7 @@ const config = yaml.load(fileContents) as AppConfig;
 export default config;
 
 export interface AppConfig {
+  apiRootPath: string;
   googleCloudConfigFilePath: string;
   tokenSecret: string;
   tokenConfig: {

@@ -19,4 +19,5 @@ export interface Artist {
   patreonName?: string;
   e621Name?: string;
   isPending: boolean;
+  isBanned: boolean;
 }

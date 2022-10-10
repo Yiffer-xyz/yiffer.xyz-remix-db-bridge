@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Express } from 'express';
+import setupAdminRoutes from './src/handlers/admin';
 import setupArtistRoutes from './src/handlers/artist';
 import setupUploadRoutes from './src/handlers/upload';
 import { errorHandler } from './src/utils/error-handling';
@@ -18,6 +19,7 @@ app.use(cors());
 
 setupUploadRoutes(app);
 setupArtistRoutes(app);
+setupAdminRoutes(app);
 
 app.use(errorHandler);
 require('./src/utils/cron-jobs');

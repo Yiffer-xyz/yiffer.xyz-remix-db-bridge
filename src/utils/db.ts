@@ -4,6 +4,20 @@ import { ApiError, makeApiError } from './error-handling';
 
 let mysqlPool = mysql.createPool(config.db);
 
+// The one handling the DB queries from Remix.
+export async function queryDbSimple(query: string, params: any[] = []) {
+  return new Promise((resolve, reject) => {
+    mysqlPool.query(query, params, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+}
+
+// Keeping this here just in case.
 export async function queryDb(
   query: string,
   queryParams: any[] = [],

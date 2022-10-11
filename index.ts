@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Express } from 'express';
-import setupArtistRoutes from './src/handlers/artist';
+import setupDbRoute from './src/handlers/database-facade';
 import setupUploadRoutes from './src/handlers/upload';
 import { errorHandler } from './src/utils/error-handling';
 
@@ -17,7 +17,10 @@ app.use(express.static('./public'));
 app.use(cors());
 
 setupUploadRoutes(app);
-setupArtistRoutes(app);
+
+// This is the one route that will handle all of Remix' db queries until D1.
+// Except for file-upload stuff, this should be the only route in use?
+setupDbRoute(app);
 
 app.use(errorHandler);
 require('./src/utils/cron-jobs');

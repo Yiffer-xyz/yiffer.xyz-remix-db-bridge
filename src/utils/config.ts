@@ -11,16 +11,6 @@ export default config;
 export interface AppConfig {
   apiRootPath: string;
   googleCloudConfigFilePath: string;
-  tokenSecret: string;
-  tokenConfig: {
-    tokenDurationDays: number;
-    algorithm: string;
-    cookieName: string;
-    secure: boolean;
-    httpOnly: boolean;
-    domain: string;
-    path: string;
-  };
   db: {
     connectionLimit: number;
     host: string;

@@ -16,15 +16,20 @@ export default function setupRoutes(app: Express) {
 async function handleDbQuery(req: Request, res: Response, next: NextFunction) {
   try {
     const { query, params } = req.body as QueryDbRequest;
+    console.log(query);
+    console.log(params);
+    console.log('\n');
     const result = await queryDbSimple(query, params);
-    res.json({ result });
+    const returnVal = { result, insertId: null };
+    if (result.insertId) {
+      returnVal.insertId = result.insertId;
+    }
+    res.json(returnVal);
   } catch (err: MysqlError | any) {
+    console.error(err);
     res.json({
-      error: {
-        sqlMessage: err.sqlMessage,
-        code: err.code,
-        sql: err.sql,
-      },
+      errorMessage: 'Datbase error',
+      errorCode: err.code,
     });
   }
 }

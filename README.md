@@ -1,6 +1,6 @@
-# Yiffer.xyz API, but better
+# Yiffer.xyz Remix <-> Database Bridge
 
-For new features developed. This will most likely be a temporary thing, until Cloudflare's D1 SQL is finally in open beta - then all new development is moved there.
+This will most be a temporary thing, until we implement Cloudflare's D1 SQL. Run this alongside the main Remix API to serve as the bridge between that and the database.
 
 ## Setup
 
